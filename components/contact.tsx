@@ -61,9 +61,6 @@ export function Contact() {
             <Card>
               <CardHeader className="pb-4">
                 <CardTitle>{portfolio.uiText.contact.formTitle}</CardTitle>
-                <p className="mt-2 text-sm text-zinc-300">
-                  {portfolio.uiText.contact.formHelper}
-                </p>
               </CardHeader>
               <CardContent>
                 <form

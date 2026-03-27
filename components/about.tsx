@@ -57,9 +57,6 @@ export function About() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-5 text-sm leading-6 text-zinc-400">
-                  {portfolio.about.avatar.note}
-                </p>
                 <div className="mt-6 rounded-2xl border border-white/10 bg-white/4 p-4">
                   <div className="text-xs font-medium text-zinc-200">
                     {portfolio.uiText.about.focusTitle}

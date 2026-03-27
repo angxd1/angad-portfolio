@@ -111,7 +111,6 @@ export type PortfolioData = {
       linksTitle: string;
       emailLabel: string;
       formTitle: string;
-      formHelper: string;
       fieldLabels: {
         name: string;
         email: string;
@@ -137,7 +136,7 @@ export type PortfolioData = {
     heading: string;
     body: string;
     highlights: string[];
-    avatar: { title: string; subtitle: string; note: string };
+    avatar: { title: string; subtitle: string };
   };
   projects: {
     heading: string;
@@ -198,8 +197,6 @@ export const portfolio: PortfolioData = {
       linksTitle: "Links",
       emailLabel: "Email",
       formTitle: "Send a message",
-      formHelper:
-        "This form sends to a simple API endpoint. Next step is plugging in email delivery.",
       placeholders: {
         name: "Your name",
         email: "you@email.com",
@@ -234,7 +231,7 @@ export const portfolio: PortfolioData = {
     { label: "GitHub", href: "https://github.com/angxd1", icon: Github },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/angad-singh",
+      href: "https://www.linkedin.com/in/angad-singh23/",
       icon: Linkedin,
     },
     { label: "Email", href: "mailto:Singa401@mcmaster.ca", icon: Mail },
@@ -259,7 +256,6 @@ export const portfolio: PortfolioData = {
     avatar: {
       title: "Angad Singh",
       subtitle: "CS @ McMaster University",
-      note: "Profile photo placeholder",
     },
   },
 
@@ -515,7 +511,7 @@ export const portfolio: PortfolioData = {
       { label: "Email", href: "mailto:Singa401@mcmaster.ca", icon: Mail },
       {
         label: "LinkedIn",
-        href: "https://www.linkedin.com/in/angad-singh",
+        href: "https://www.linkedin.com/in/angad-singh23/",
         icon: Linkedin,
       },
       { label: "GitHub", href: "https://github.com/angxd1", icon: Github },

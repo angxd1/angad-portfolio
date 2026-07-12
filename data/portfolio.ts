@@ -265,6 +265,40 @@ export const portfolio: PortfolioData = {
       "A few systems I’ve built end-to-end. Each one is designed around a real workflow—not a demo for demo’s sake.",
     items: [
       {
+        title: "Dextera — Smart-Glove Rehab Platform",
+        tagline:
+          "Real-time smart-glove platform for game-based stroke and hand-trauma rehab",
+        description:
+          "A rehabilitation platform that streams live finger-motion data from an ESP32 smart glove (five flex sensors) into a real-time clinician dashboard over WebSockets—turning post-stroke hand therapy into measurable, game-based recovery. I built the full stack, from serial signal processing to rehab games and progress tracking.",
+        stack: [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "WebSockets",
+          "ESP32",
+          "MediaPipe",
+          "React Three Fiber",
+        ],
+        highlights: [
+          "Serial bridge converting raw ESP32 ADC readings into calibrated bend percentages",
+          "Real-time clinician dashboard over WebSockets with live gesture classification",
+          "React Three Fiber + MediaPipe rehab games with Gemini-assisted patient summaries",
+        ],
+        meta: {
+          eyebrow: "Smart-glove rehabilitation platform",
+          cardNote: "Real-time • hardware",
+          thumbnail: {
+            src: "/projects/dextera.png",
+            alt: "Dextera thumbnail — smart-glove rehabilitation platform",
+          },
+        },
+        links: {
+          github: "https://github.com/athravseruwam07/dextera",
+        },
+      },
+      {
         title: "MemoLens",
         tagline: "Real-time assistive system for dementia care",
         description:
@@ -429,10 +463,21 @@ export const portfolio: PortfolioData = {
     subheading: "Roles that improved how I build, communicate, and follow through.",
     items: [
       {
+        role: "President",
+        organization: "AWS Student Builder Group, McMaster University",
+        location: "Hamilton, ON",
+        dates: "May 2026 – Present",
+        bullets: [
+          "Lead the McMaster chapter as President, building and directing a cross-functional executive team across Technical, Events, Finance, Socials, and 1st-Year Rep roles to grow membership and campus presence",
+          "Set the term roadmap and deliver hands-on cloud & AI programming workshops, technical talks, cloud labs, and project nights that give students real-world experience with AWS services",
+          "Drive outreach and community growth through LinkedIn/Instagram campaigns and student initiatives, coordinating event delivery with AWS support using GitHub, Slack, and Notion",
+        ],
+      },
+      {
         role: "Cloud Engineer",
         organization: "AWS Cloud Club, McMaster University",
         location: "Hamilton, ON",
-        dates: "Nov 2025 – Present",
+        dates: "Nov 2025 – May 2026",
         bullets: [
           "Core team member helping grow a student cloud community focused on hands-on engineering",
           "Co-design workshops, labs, and project nights with a cross-functional leadership team",

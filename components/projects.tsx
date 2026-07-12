@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   Cloud,
   GraduationCap,
+  Hand,
   Radar,
   ShieldCheck,
   ArrowUpRight,
@@ -29,6 +30,14 @@ const projectVisuals: Record<
     pattern: string;
   }
 > = {
+  "Dextera — Smart-Glove Rehab Platform": {
+    icon: Hand,
+    gradient:
+      "bg-[radial-gradient(circle_at_20%_20%,rgba(251,146,60,0.20),transparent_55%),radial-gradient(circle_at_80%_25%,rgba(244,114,132,0.14),transparent_55%),linear-gradient(to_bottom,rgba(255,255,255,0.10),rgba(255,255,255,0.02))]",
+    glow: "shadow-[0_40px_120px_-90px_rgba(251,146,60,0.32)]",
+    pattern:
+      "bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[length:60px_60px]",
+  },
   MemoLens: {
     icon: Radar,
     gradient:

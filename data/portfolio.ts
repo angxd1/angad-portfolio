@@ -441,12 +441,20 @@ export const portfolio: PortfolioData = {
       },
       {
         title: "Tools & Platforms",
-        items: ["Git", "GitHub", "VS Code", "SQLite", "Docker", "PostgreSQL", "Redis"],
+        items: ["Git", "GitHub", "VS Code", "SQLite", "Docker", "PostgreSQL", "Redis", "Pytest"],
+      },
+      {
+        title: "Concepts",
+        items: [
+          "Object-Oriented Programming (OOP)",
+          "REST APIs",
+          "Data Structures & Algorithms",
+        ],
       },
       {
         title: "Cloud / AI / Data",
         items: [
-          "AWS",
+          "AWS (EC2, S3)",
           "Google Gemini API",
           "OpenAI API",
           "SSE",
@@ -462,6 +470,16 @@ export const portfolio: PortfolioData = {
     heading: "Experience",
     subheading: "Roles that improved how I build, communicate, and follow through.",
     items: [
+      {
+        role: "Software Engineer Intern",
+        organization: "CloudSynApps",
+        location: "Mississauga, ON",
+        dates: "June 2026 – August 2026",
+        bullets: [
+          "Contribute to client-facing software and cloud solutions as part of a consulting delivery team, spanning research, development, and technical documentation across the project lifecycle",
+          "Build and refine internal enablement material on cloud and AI tooling, translating evolving platform capabilities into clear, practical guidance for the team",
+        ],
+      },
       {
         role: "President",
         organization: "AWS Student Builder Group, McMaster University",
@@ -542,7 +560,7 @@ export const portfolio: PortfolioData = {
       school: "McMaster University",
       program: "Candidate for BASc, Computer Science",
       location: "Hamilton, ON, Canada",
-      dates: "Sept 2025 – Apr 2030 (Expected)",
+      dates: "Sept 2025 – Apr 2029 (Expected)",
       note: "Interests: AI, data tools, cloud systems, and software development.",
     },
   },

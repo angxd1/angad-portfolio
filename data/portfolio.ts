@@ -481,6 +481,16 @@ export const portfolio: PortfolioData = {
         ],
       },
       {
+        role: "Software Developer",
+        organization: "Blueprint McMaster",
+        location: "Hamilton, ON",
+        dates: "October 2026 – Present",
+        bullets: [
+          "Develop free software for nonprofit partners as part of Blueprint McMaster, a student-run club that scopes, builds, and delivers tools that help organizations extend their impact",
+          "Collaborate with student developers, designers, and product managers across discovery, implementation, and handoff to ship production-ready solutions at no cost to partner NGOs",
+        ],
+      },
+      {
         role: "President",
         organization: "AWS Student Builder Group, McMaster University",
         location: "Hamilton, ON",

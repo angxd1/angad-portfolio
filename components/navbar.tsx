@@ -8,7 +8,14 @@ import { motion } from "framer-motion";
 import { portfolio } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { useActiveSection } from "@/components/use-active-section";
 
 function scrollToId(id: string) {
@@ -30,12 +37,12 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="fixed inset-x-0 top-0 z-50">
       <div
         className={cn(
           "border-b border-transparent transition",
           scrolled &&
-            "border-white/10 bg-zinc-950/70 shadow-[0_10px_40px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+            "border-[var(--line)] bg-charcoal/80 shadow-[0_10px_40px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl"
         )}
       >
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
@@ -45,15 +52,18 @@ export function Navbar() {
               e.preventDefault();
               scrollToId("home");
             }}
-            className="group inline-flex items-center gap-2 font-semibold tracking-tight text-zinc-50"
+            className="group inline-flex items-center gap-2.5"
           >
-            <span className="relative">
-              <span className="absolute -inset-x-2 -inset-y-1 rounded-lg bg-white/0 transition group-hover:bg-white/5" />
-              <span className="relative">{portfolio.person.name}</span>
+            <span className="glow-pulse h-2 w-2 rounded-full bg-copper" />
+            <span className="font-display text-sm font-bold tracking-tight text-foreground">
+              {portfolio.person.name}
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+          <nav
+            className="hidden items-center gap-1 lg:flex"
+            aria-label="Primary"
+          >
             {portfolio.nav.slice(1).map((item) => {
               const isActive = active === item.id;
               return (
@@ -65,15 +75,15 @@ export function Navbar() {
                     scrollToId(item.id);
                   }}
                   className={cn(
-                    "relative rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-zinc-50",
-                    isActive && "text-zinc-50"
+                    "relative rounded-lg px-3 py-2 text-sm text-mist transition hover:text-foreground",
+                    isActive && "text-foreground"
                   )}
                   aria-current={isActive ? "page" : undefined}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-lg bg-white/7 ring-1 ring-white/12"
+                      className="absolute inset-0 rounded-lg bg-copper-dim ring-1 ring-copper/30"
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
                   )}
@@ -85,11 +95,18 @@ export function Navbar() {
 
           <div className="flex items-center gap-2">
             <Button
-              className="hidden md:inline-flex"
+              className="hidden sm:inline-flex"
               variant="outline"
+              size="sm"
               asChild
             >
-              <a href="#contact" onClick={(e) => (e.preventDefault(), scrollToId("contact"))}>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId("contact");
+                }}
+              >
                 Contact
               </a>
             </Button>
@@ -99,15 +116,18 @@ export function Navbar() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="md:hidden"
+                  className="lg:hidden"
                   aria-label="Open menu"
                 >
                   <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-zinc-950/92">
+              <SheetContent
+                side="right"
+                className="border-[var(--line)] bg-charcoal/95"
+              >
                 <SheetHeader>
-                  <SheetTitle className="flex items-center justify-between">
+                  <SheetTitle className="flex items-center justify-between font-display">
                     <span>{portfolio.uiText.navbar.mobileTitle}</span>
                     <SheetClose asChild>
                       <Button variant="ghost" size="icon" aria-label="Close menu">
@@ -129,8 +149,9 @@ export function Navbar() {
                             scrollToId(item.id);
                           }}
                           className={cn(
-                            "rounded-xl px-4 py-3 text-sm text-zinc-200 ring-1 ring-transparent transition hover:bg-white/5 hover:text-zinc-50",
-                            isActive && "bg-white/6 text-zinc-50 ring-white/10"
+                            "rounded-xl px-4 py-3 text-sm text-foreground/85 ring-1 ring-transparent transition hover:bg-white/5",
+                            isActive &&
+                              "bg-copper-dim text-foreground ring-copper/30"
                           )}
                         >
                           {item.label}
@@ -138,17 +159,6 @@ export function Navbar() {
                       </SheetClose>
                     );
                   })}
-                </div>
-
-                <div className="mt-6 grid grid-cols-2 gap-2">
-                  {portfolio.social.map((s) => (
-                    <Button key={s.label} variant="outline" asChild>
-                      <a href={s.href} target="_blank" rel="noreferrer">
-                        <s.icon className="h-4 w-4" />
-                        {s.label}
-                      </a>
-                    </Button>
-                  ))}
                 </div>
               </SheetContent>
             </Sheet>
@@ -158,4 +168,3 @@ export function Navbar() {
     </header>
   );
 }
-

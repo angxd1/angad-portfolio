@@ -4,19 +4,20 @@ import * as React from "react";
 
 import { portfolio } from "@/data/portfolio";
 import { Container } from "@/components/section";
-import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
   return (
     <footer className="pb-10 md:pb-12">
       <Container>
-        <Separator className="mb-8" />
+        <div className="mb-8 h-px hairline opacity-40" />
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-sm font-semibold text-zinc-50">
+            <div className="font-display text-sm font-bold text-foreground">
               {portfolio.person.name}
             </div>
-            <div className="mt-2 text-sm text-zinc-400">{portfolio.footer.note}</div>
+            <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-mist">
+              {portfolio.footer.note}
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
@@ -26,13 +27,13 @@ export function Footer() {
                 href={s.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-zinc-200 transition hover:bg-white/8 hover:text-zinc-50"
+                className="inline-flex items-center gap-2 rounded-lg border border-[var(--line)] bg-charcoal-elevated px-3 py-2 text-sm text-foreground/85 transition hover:border-copper/35 hover:text-foreground"
               >
-                <s.icon className="h-4 w-4" />
+                <s.icon className="h-4 w-4 text-copper" />
                 {s.label}
               </a>
             ))}
-            <span className="text-sm text-zinc-500">
+            <span className="font-mono text-[11px] text-mist">
               © {new Date().getFullYear()}
             </span>
           </div>
@@ -41,4 +42,3 @@ export function Footer() {
     </footer>
   );
 }
-

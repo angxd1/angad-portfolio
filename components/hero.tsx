@@ -1,14 +1,24 @@
 "use client";
 
 import * as React from "react";
-import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { ArrowDownRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { portfolio } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Container, Section } from "@/components/section";
 import { cn } from "@/lib/utils";
+
+const HandScene = dynamic(
+  () => import("@/components/hand-scene").then((m) => m.HandScene),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="absolute inset-0 bg-charcoal" aria-hidden />
+    ),
+  }
+);
 
 function scrollToHash(href: string) {
   if (!href.startsWith("#")) return false;
@@ -20,72 +30,76 @@ function scrollToHash(href: string) {
 }
 
 export function Hero() {
+  const reduce = useReducedMotion();
+
   return (
-    <Section id="home" className="pt-14 md:pt-16">
-      <Container>
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/6 to-white/2 shadow-[0_40px_120px_-80px_rgba(0,0,0,0.8)]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(255,255,255,0.12),transparent_60%)]" />
-          <div className="pointer-events-none absolute inset-0 opacity-60 bg-grid" />
+    <section
+      id="home"
+      className="relative min-h-[100dvh] scroll-mt-0 overflow-hidden"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_70%_45%,rgba(232,161,90,0.14),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_20%_80%,rgba(243,235,227,0.04),transparent_55%)]" />
 
-          <div className="relative px-6 py-12 sm:py-14 md:px-12 md:py-18">
-            <motion.div
-              initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, ease: [0.21, 0.61, 0.35, 1] }}
-              className="mx-auto max-w-3xl"
-            >
-              <div className="flex flex-wrap items-center gap-3">
-                <Badge variant="strong">{portfolio.person.badge}</Badge>
-                <span className="text-xs text-zinc-400">
-                  {portfolio.person.locationLine}
-                </span>
-              </div>
+      <div className="absolute inset-0 md:left-[38%] md:right-0">
+        <HandScene />
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/85 to-charcoal/20 md:via-charcoal/70 md:to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-charcoal to-transparent" />
 
-              <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-zinc-50 sm:text-5xl md:text-6xl">
-                {portfolio.person.headline}
-              </h1>
-              <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-zinc-200 md:text-xl">
-                {portfolio.person.subheadline}
-              </p>
-              <p className="mt-5 max-w-2xl text-pretty text-sm leading-7 text-zinc-300 md:text-base">
-                {portfolio.person.description}
-              </p>
-
-              <div className="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-3 md:flex md:flex-row md:flex-wrap md:items-center">
-                {portfolio.heroCtas.map((cta) => (
-                  <Button
-                    key={cta.label}
-                    variant={cta.variant ?? "default"}
-                    className={cn(
-                      "w-full justify-center md:w-auto",
-                      cta.variant === "default" &&
-                        "bg-gradient-to-b from-white to-zinc-100 text-zinc-950 hover:from-white/95 hover:to-zinc-100/95"
-                    )}
-                    asChild
-                  >
-                    <a
-                      href={cta.href}
-                      target={cta.href.startsWith("http") ? "_blank" : undefined}
-                      rel={cta.href.startsWith("http") ? "noreferrer" : undefined}
-                      onClick={(e) => {
-                        const did = scrollToHash(cta.href);
-                        if (did) e.preventDefault();
-                      }}
-                    >
-                      {cta.icon ? <cta.icon className="h-4 w-4" /> : null}
-                      {cta.label}
-                      {cta.label === "View Projects" ? (
-                        <ArrowRight className="h-4 w-4 opacity-80" />
-                      ) : null}
-                    </a>
-                  </Button>
-                ))}
-              </div>
-            </motion.div>
+      <div className="relative mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col justify-center px-6 pb-20 pt-28 md:px-10 md:pb-24 md:pt-32">
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, ease: [0.21, 0.61, 0.35, 1] }}
+          className="max-w-xl"
+        >
+          <div className="flex flex-wrap items-center gap-3">
+            <Badge>{portfolio.person.badge}</Badge>
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-mist">
+              {portfolio.person.locationLine}
+            </span>
           </div>
-        </div>
-      </Container>
-    </Section>
+
+          <h1 className="font-display mt-7 text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem] lg:leading-[0.95]">
+            {portfolio.person.headline}
+          </h1>
+
+          <p className="mt-6 max-w-md text-pretty text-xl leading-snug text-foreground/90 md:text-2xl">
+            {portfolio.person.subheadline}
+          </p>
+
+          <p className="mt-4 max-w-md text-pretty text-sm leading-7 text-mist md:text-base">
+            {portfolio.person.description}
+          </p>
+
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            {portfolio.heroCtas.map((cta) => (
+              <Button
+                key={cta.label}
+                variant={cta.variant ?? "default"}
+                className={cn(cta.variant === "ghost" && "px-3")}
+                asChild
+              >
+                <a
+                  href={cta.href}
+                  target={cta.href.startsWith("http") ? "_blank" : undefined}
+                  rel={cta.href.startsWith("http") ? "noreferrer" : undefined}
+                  onClick={(e) => {
+                    const did = scrollToHash(cta.href);
+                    if (did) e.preventDefault();
+                  }}
+                >
+                  {cta.icon ? <cta.icon className="h-4 w-4" /> : null}
+                  {cta.label}
+                  {cta.label === "View work" ? (
+                    <ArrowDownRight className="h-4 w-4" />
+                  ) : null}
+                </a>
+              </Button>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
-

@@ -38,7 +38,7 @@ function SheetContent({
       <SheetOverlay />
       <DialogPrimitive.Content
         className={cn(
-          "fixed z-50 grid gap-6 border border-white/10 bg-zinc-950/95 p-6 shadow-2xl outline-none backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70",
+          "fixed z-50 grid gap-6 border border-[var(--line)] bg-charcoal/95 p-6 shadow-2xl outline-none backdrop-blur supports-[backdrop-filter]:bg-charcoal/90",
           side === "right" && "inset-y-0 right-0 h-full w-[320px]",
           side === "left" && "inset-y-0 left-0 h-full w-[320px]",
           side === "top" && "inset-x-0 top-0 w-full",
@@ -63,7 +63,7 @@ function SheetTitle({
 }: React.ComponentProps<typeof DialogPrimitive.Title>) {
   return (
     <DialogPrimitive.Title
-      className={cn("text-base font-semibold text-zinc-50", className)}
+      className={cn("text-base font-semibold text-foreground", className)}
       {...props}
     />
   );
@@ -75,7 +75,7 @@ function SheetDescription({
 }: React.ComponentProps<typeof DialogPrimitive.Description>) {
   return (
     <DialogPrimitive.Description
-      className={cn("text-sm text-zinc-300", className)}
+      className={cn("text-sm text-mist", className)}
       {...props}
     />
   );

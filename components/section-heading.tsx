@@ -7,23 +7,34 @@ import { cn } from "@/lib/utils";
 export function SectionHeading({
   title,
   subtitle,
+  eyebrow,
   className,
 }: {
   title: string;
   subtitle?: string;
+  eyebrow?: string;
   className?: string;
 }) {
   return (
     <div className={cn("max-w-3xl", className)}>
-      <h2 className="text-balance text-2xl font-semibold tracking-tight text-zinc-50 sm:text-[28px] md:text-3xl">
+      {eyebrow ? (
+        <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-copper">
+          {eyebrow}
+        </div>
+      ) : null}
+      <h2
+        className={cn(
+          "font-display text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-[2.75rem]",
+          eyebrow && "mt-3"
+        )}
+      >
         {title}
       </h2>
       {subtitle ? (
-        <p className="mt-3 text-pretty text-sm leading-7 text-zinc-300 md:text-[15px]">
+        <p className="mt-4 max-w-2xl text-pretty text-base leading-7 text-mist md:text-[17px]">
           {subtitle}
         </p>
       ) : null}
     </div>
   );
 }
-

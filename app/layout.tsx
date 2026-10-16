@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono, Outfit, Syne } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Syne({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+});
+
+const body = Outfit({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 const siteUrl =
@@ -22,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s — Angad Singh",
   },
   description:
-    "Angad Singh — Computer Science student building practical AI, data, and software systems.",
+    "Angad Singh — Computer Science student building systems that move, from smart gloves to AI products.",
   alternates: {
     canonical: "/",
   },
@@ -31,15 +38,17 @@ export const metadata: Metadata = {
     url: "/",
     title: "Angad Singh — Portfolio",
     description:
-      "Computer Science student building practical AI, data, and software systems.",
+      "Computer Science student building systems that move, from smart gloves to AI products.",
     siteName: "Angad Singh",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Angad Singh — Portfolio" }],
+    images: [
+      { url: "/og.png", width: 1200, height: 630, alt: "Angad Singh — Portfolio" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Angad Singh — Portfolio",
     description:
-      "Computer Science student building practical AI, data, and software systems.",
+      "Computer Science student building systems that move, from smart gloves to AI products.",
     images: ["/og.png"],
   },
   robots: {
@@ -54,13 +63,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-dvh bg-[#07070a] text-zinc-100 antialiased`}
+        className={`${display.variable} ${body.variable} ${mono.variable} min-h-dvh bg-charcoal text-foreground antialiased`}
       >
         <a
           href="#main-content"
-          className="skip-link sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-zinc-950/90 focus:px-4 focus:py-3 focus:text-sm focus:text-zinc-50 focus:ring-2 focus:ring-white/20"
+          className="skip-link sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-copper focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-sand-ink"
         >
           Skip to content
         </a>

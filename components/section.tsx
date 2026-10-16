@@ -24,12 +24,8 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn(
-        "scroll-mt-24 py-16 sm:py-20 md:py-24",
-        className
-      )}
+      className={cn("scroll-mt-24 py-20 sm:py-24 md:py-28", className)}
       {...props}
     />
   );
 }
-

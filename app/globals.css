@@ -3,8 +3,30 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-elevated: var(--charcoal-elevated);
+  --color-copper: var(--copper);
+  --color-copper-dim: var(--copper-dim);
+  --color-sand: var(--sand);
+  --color-sand-ink: var(--sand-ink);
+  --color-mist: var(--mist);
+  --color-line: var(--line);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --background: #12100e;
+  --foreground: #f3ebe3;
+  --charcoal: #12100e;
+  --charcoal-elevated: #1c1916;
+  --copper: #e8a15a;
+  --copper-dim: rgba(232, 161, 90, 0.16);
+  --sand: #f0e6d8;
+  --sand-ink: #1c1612;
+  --mist: #a89b8c;
+  --line: rgba(243, 235, 227, 0.1);
 }
 
 html {
@@ -12,24 +34,30 @@ html {
 }
 
 body {
-  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  background: var(--charcoal);
+  color: var(--foreground);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
+  .orbit-spin {
+    animation: none !important;
+  }
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(232, 161, 90, 0.35);
+  color: #1c1612;
 }
 
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18);
-  border-radius: 12px;
+  box-shadow: 0 0 0 2px rgba(232, 161, 90, 0.5);
+  border-radius: 10px;
 }
 
 .skip-link:focus-visible {
@@ -44,41 +72,59 @@ body {
   text-wrap: pretty;
 }
 
-.surface {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.07),
-    rgba(255, 255, 255, 0.03)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 35px 140px -110px rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(18px);
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 }
 
-.divider {
-  mask-image: radial-gradient(ellipse 65% 55% at 50% 50%, black 45%, transparent 78%);
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.surface {
   background: linear-gradient(
-    to right,
+    180deg,
+    rgba(243, 235, 227, 0.05),
+    rgba(243, 235, 227, 0.02)
+  );
+  border: 1px solid var(--line);
+}
+
+.surface-sand {
+  background: var(--sand);
+  color: var(--sand-ink);
+  border: 1px solid rgba(28, 22, 18, 0.08);
+}
+
+.hairline {
+  background: linear-gradient(
+    90deg,
     transparent,
-    rgba(255, 255, 255, 0.09),
+    var(--copper),
     transparent
   );
   height: 1px;
 }
 
-.bg-grid {
-  background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px
-    );
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 60% 55% at 50% 35%, black 45%, transparent 72%);
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
+.orbit-spin {
+  animation: orbit-spin 80s linear infinite;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2.8s ease-in-out infinite;
+}

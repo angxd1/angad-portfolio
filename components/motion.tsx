@@ -6,12 +6,11 @@ import { motion, type Variants, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 16 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.6, ease: [0.21, 0.61, 0.35, 1] },
+    transition: { duration: 0.55, ease: [0.21, 0.61, 0.35, 1] },
   },
 };
 
@@ -57,7 +56,7 @@ export function Reveal({
       className={cn(className)}
       initial={reduce ? false : "hidden"}
       whileInView={reduce ? undefined : "show"}
-      viewport={{ once: true, margin: "-20% 0px -15% 0px" }}
+      viewport={{ once: true, margin: "-18% 0px -12% 0px" }}
       variants={reduce ? undefined : fadeUp}
       transition={reduce ? undefined : { delay }}
     >
@@ -65,4 +64,3 @@ export function Reveal({
     </motion.div>
   );
 }
-
